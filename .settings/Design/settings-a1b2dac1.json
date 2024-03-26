@@ -9,7 +9,7 @@
   "UiPath.UIAutomationNext.Activities.SearchStepsWnd.WpfSelectors": "False",
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.EdgeInteractionMode": "DebuggerApi",
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.InteractionMode": "Simulate",
-  "UiPath.UIAutomationNext.Activities.SearchStepsWeb.FullSelector": "False",
+  "UiPath.UIAutomationNext.Activities.SearchStepsWeb.FullSelector": "True",
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.FuzzySelector": "True",
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.ComputerVision": "True",
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.Image": "False",
