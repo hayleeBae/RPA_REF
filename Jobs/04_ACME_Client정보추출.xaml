@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1171,3940</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1208,3940</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_04_ACME_Client정보추출_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -120,7 +120,7 @@
       <Variable x:TypeArguments="x:String" Name="strdtClient" />
       <Variable x:TypeArguments="x:String" Name="strWIID" />
       <Variable x:TypeArguments="x:String" Name="strdtJoin" />
-      <Variable x:TypeArguments="x:String" Name="strExtractDataTable" />
+      <Variable x:TypeArguments="x:String" Name="strFilterDataTable" />
       <Variable x:TypeArguments="s:String[]" Name="arr새컬럼" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -393,8 +393,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:OutputDataTable DataTable="[in_ExtractDataTable]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="642,120" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[strExtractDataTable]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="642,130" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[strExtractDataTable]" />
+    <ui:OutputDataTable DataTable="[out_FilterDataTable]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="642,120" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[strFilterDataTable]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="642,130" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[strFilterDataTable]" />
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="642,65" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="512,857" sap2010:WorkflowViewState.IdRef="Sequence_10">

@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="example" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1171,1545" sap2010:WorkflowViewState.IdRef="example_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="example" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1208,1336" sap2010:WorkflowViewState.IdRef="example_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -94,7 +94,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="//DataPivot&#xA;&#xA;- Templete.xlsx 파일을 Copy하여 &quot;DataPivot_정수진.xlsx&quot;라는 결과파일을 만듦&#xA;&#xA;- 결과파일에 각각의 데이터 파일(가~라)에서 데이터를 피벗하여 나온 데이터를 각 시트에 붙여넣고, 데이터의 합계를 종합시트에 기입&#xA;&#xA;- 종합시트 상단 : '현재년도 현재월 자료' 라고 상단에 기입&#xA;- 제품별 시트 : 각 Row 데이터를 종합한뒤 제품별로 정렬 후 기입 &#xA;  (단, 데이터 포맷이 깨지지 않도록 작업할 것)" DisplayName="example" sap:VirtualizedContainerService.HintSize="602,1480" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="//DataPivot&#xA;&#xA;- Templete.xlsx 파일을 Copy하여 &quot;DataPivot_정수진.xlsx&quot;라는 결과파일을 만듦&#xA;&#xA;- 결과파일에 각각의 데이터 파일(가~라)에서 데이터를 피벗하여 나온 데이터를 각 시트에 붙여넣고, 데이터의 합계를 종합시트에 기입&#xA;&#xA;- 종합시트 상단 : '현재년도 현재월 자료' 라고 상단에 기입&#xA;- 제품별 시트 : 각 Row 데이터를 종합한뒤 제품별로 정렬 후 기입 &#xA;  (단, 데이터 포맷이 깨지지 않도록 작업할 것)" DisplayName="example" sap:VirtualizedContainerService.HintSize="592,1271" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt가" />
     </Sequence.Variables>
@@ -104,21 +104,20 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CopyFile ContinueOnError="{x:Null}" Destination="file\DataPivot_배혜빈.xlsx" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="540,194" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="file\Templete.xlsx" />
-    <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="540,1036" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="Maximize" WorkbookPath="file\가.xlsx">
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="file\DataPivot_배혜빈.xlsx" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="530,194" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="file\Templete.xlsx" />
+    <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="530,827" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="Maximize" WorkbookPath="file\가.xlsx">
       <ueab:ExcelApplicationCard.Body>
         <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="506,744" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="496,535" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ueab:ReadRangeX DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="444,209" sap2010:WorkflowViewState.IdRef="ReadRangeX_2" Range="[Excel.Sheet(&quot;Sheet1&quot;)]" SaveTo="[dt가]" />
-            <ueab:CreatePivotTableXv2 DestinationRange="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Create Pivot Table" sap:VirtualizedContainerService.HintSize="444,450" sap2010:WorkflowViewState.IdRef="CreatePivotTableXv2_1" LayoutRowType="Compact" Range="[Excel.Sheet(&quot;Sheet1&quot;)]" TableName="Pivot_가" ValuesMode="Columns">
+            <ueab:CreatePivotTableXv2 DestinationRange="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Create Pivot Table" sap:VirtualizedContainerService.HintSize="434,450" sap2010:WorkflowViewState.IdRef="CreatePivotTableXv2_1" LayoutRowType="Compact" Range="[Excel.Sheet(&quot;Sheet1&quot;)]" TableName="[Excel.Sheet(&quot;Sheet1&quot;).Cell(&quot;I5&quot;)]" ValuesMode="Columns">
               <ueab:CreatePivotTableXv2.Body>
                 <ActivityAction>
                   <Sequence DisplayName="실행" sap2010:WorkflowViewState.IdRef="Sequence_3">
