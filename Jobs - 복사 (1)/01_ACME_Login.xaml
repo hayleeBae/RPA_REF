@@ -1,23 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_01_ACME_Login" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_01_ACME_Login" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_strID" Type="InArgument(x:String)" />
-    <x:Property Name="in_strPassWord" Type="InArgument(ss:SecureString)" />
-    <x:Property Name="in_strACME_URL" Type="InArgument(x:String)" />
     <x:Property Name="in_dicConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
-  <this:_01_ACME_Login.in_strID>
-    <InArgument x:TypeArguments="x:String" />
-  </this:_01_ACME_Login.in_strID>
-  <this:_01_ACME_Login.in_strPassWord>
-    <InArgument x:TypeArguments="ss:SecureString" />
-  </this:_01_ACME_Login.in_strPassWord>
-  <this:_01_ACME_Login.in_strACME_URL>
-    <InArgument x:TypeArguments="x:String" />
-  </this:_01_ACME_Login.in_strACME_URL>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1169,2769</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>598,1586</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01_ACME_Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -63,6 +51,10 @@
       <x:String>UiPath.UIAutomationNext.Contracts</x:String>
       <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -125,13 +117,15 @@
       <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_01_ACME_Login" sap:VirtualizedContainerService.HintSize="608,2704" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_01_ACME_Login" sap:VirtualizedContainerService.HintSize="608,1521" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="strID" />
-      <Variable x:TypeArguments="ss:SecureString" Name="strPassWord" />
       <Variable x:TypeArguments="x:Boolean" Name="blLogout" />
+      <Variable x:TypeArguments="x:Boolean" Name="bLEmail" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -146,76 +140,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="546,65" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,293" sap2010:WorkflowViewState.IdRef="Sequence_11">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:GetRobotCredential Password="{x:Null}" TimeoutMS="{x:Null}" Username="{x:Null}" sap2010:Annotation.AnnotationText="uipath orchestrator 접속해서 확인 가능&#xA;속성창에서 이름과 암호 출력 변수로 지정 가능" AssetName="Cre_ACME" CacheStrategy="None" DisplayName="Get Credential" FolderPath="baeeura94@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="354,208" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:GetRobotCredential>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="546,65" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,133" sap2010:WorkflowViewState.IdRef="Sequence_21">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign DisplayName="ID,PW 생성 | Multiple Assign" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
-            <ui:MultipleAssign.AssignOperations>
-              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-                  <ui:AssignOperation.To>
-                    <OutArgument x:TypeArguments="x:String">[strID]</OutArgument>
-                  </ui:AssignOperation.To>
-                  <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">medicine94@naver.com</InArgument>
-                  </ui:AssignOperation.Value>
-                </ui:AssignOperation>
-                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-                  <ui:AssignOperation.To>
-                    <OutArgument x:TypeArguments="ss:SecureString">[strPassWord]</OutArgument>
-                  </ui:AssignOperation.To>
-                  <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">qwe123!!</InArgument>
-                  </ui:AssignOperation.Value>
-                </ui:AssignOperation>
-              </scg:List>
-            </ui:MultipleAssign.AssignOperations>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:MultipleAssign>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="사이트 접속 | Open Browser" sap:VirtualizedContainerService.HintSize="546,298" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_dicConfig(&quot;ACME_URL&quot;).ToString]">
+    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="사이트 접속 | Open Browser" sap:VirtualizedContainerService.HintSize="546,338" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_dicConfig(&quot;ACME_URL&quot;).ToString]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -238,13 +163,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:OpenBrowser>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="요소 확인 후 로그인 | Attach Browser 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="546,2010" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3d046a020a66e97c82a7f414b40f1954" Selector="&lt;html app='chrome.exe' title='ACME System *' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="요소 확인 후 로그인 | Attach Browser 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="546,917" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3d046a020a66e97c82a7f414b40f1954" Selector="&lt;html app='chrome.exe' title='ACME System *' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="512,1823" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="512,730" sap2010:WorkflowViewState.IdRef="Sequence_15">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -269,12 +194,12 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:UiElementExists>
-            <If Condition="[blLogout]" DisplayName="로그아웃 여부 확인 | If" sap:VirtualizedContainerService.HintSize="450,1371" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[blLogout]" DisplayName="로그아웃 여부 확인 | If" sap:VirtualizedContainerService.HintSize="450,278" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,735" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,22" sap2010:WorkflowViewState.IdRef="Sequence_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -301,9 +226,9 @@
                     </ui:Click.Target>
                   </ui:Click>
                   <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="354,130" sap2010:WorkflowViewState.IdRef="Delay_4" />
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  email'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,195" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[in_strID]">
-                    <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="395e7905-baf7-4e11-8dde-2c77c3381053" InformativeScreenshot="963d10b737e8c2b991699a106f74ba60" Selector="&lt;webctrl id='email' tag='INPUT' /&gt;">
+                  <ui:UiElementExists DisplayName="Element Exists 'INPUT  email'" Exists="[blEmail]" sap:VirtualizedContainerService.HintSize="354,147" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a564afeb-b062-45af-bb24-87e2acf13007" InformativeScreenshot="1f38e3737ada870328e891d272d078d1" Selector="&lt;webctrl id='email' tag='INPUT' /&gt;">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
@@ -311,31 +236,96 @@
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
                       </ui:Target>
-                    </ui:TypeInto.Target>
-                  </ui:TypeInto>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  password'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,178" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[in_strPassWord.ToString+ &quot;[k(enter)]&quot;]">
-                    <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6818960c-623d-4929-9f4f-2b09c6c4dc0e" InformativeScreenshot="a6b2c86c2b6df67a09d00c9b3b7f48c1" Selector="&lt;webctrl id='password' tag='INPUT' /&gt;">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                        <ui:Target.WaitForReady>
-                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                        </ui:Target.WaitForReady>
-                      </ui:Target>
-                    </ui:TypeInto.Target>
-                  </ui:TypeInto>
+                    </ui:UiElementExists.Target>
+                  </ui:UiElementExists>
+                  <If Condition="[blEmail]" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="If_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,22" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  email'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,195" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[in_dicConfig(&quot;ACME_ID&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="395e7905-baf7-4e11-8dde-2c77c3381053" InformativeScreenshot="963d10b737e8c2b991699a106f74ba60" Selector="&lt;webctrl id='email' tag='INPUT' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  password'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,178" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[in_dicConfig(&quot;ACME_PassWord&quot;).ToString+ &quot;[k(enter)]&quot;]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6818960c-623d-4929-9f4f-2b09c6c4dc0e" InformativeScreenshot="a6b2c86c2b6df67a09d00c9b3b7f48c1" Selector="&lt;webctrl id='password' tag='INPUT' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,22" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="354,125" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_dicConfig(&quot;ACME_URL&quot;).ToString]" />
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  email'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,195" sap2010:WorkflowViewState.IdRef="TypeInto_5" Text="[in_dicConfig(&quot;ACME_ID&quot;).ToString]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="395e7905-baf7-4e11-8dde-2c77c3381053" InformativeScreenshot="963d10b737e8c2b991699a106f74ba60" Selector="&lt;webctrl id='email' tag='INPUT' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  password'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,178" sap2010:WorkflowViewState.IdRef="TypeInto_6" Text="[in_dicConfig(&quot;ACME_PassWord&quot;).ToString+ &quot;[k(enter)]&quot;]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6818960c-623d-4929-9f4f-2b09c6c4dc0e" InformativeScreenshot="a6b2c86c2b6df67a09d00c9b3b7f48c1" Selector="&lt;webctrl id='password' tag='INPUT' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                      </Sequence>
+                    </If.Else>
+                  </If>
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,458" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,22" sap2010:WorkflowViewState.IdRef="Sequence_17">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  email'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,195" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_strID]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  email'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,195" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_dicConfig(&quot;ACME_ID&quot;).ToString]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="395e7905-baf7-4e11-8dde-2c77c3381053" InformativeScreenshot="27d2e27b2ae6afd27f1ba6798feb1c18" Selector="&lt;webctrl id='email' tag='INPUT' /&gt;">
                         <ui:Target.TimeoutMS>
@@ -347,7 +337,7 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  password'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,178" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_strPassWord.ToString+ &quot;[k(enter)]&quot;]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  password'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,178" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_dicConfig(&quot;ACME_PassWord&quot;).ToString+ &quot;[k(enter)]&quot;]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6818960c-623d-4929-9f4f-2b09c6c4dc0e" InformativeScreenshot="a6b2c86c2b6df67a09d00c9b3b7f48c1" Selector="&lt;webctrl id='password' tag='INPUT' /&gt;">
                         <ui:Target.TimeoutMS>
